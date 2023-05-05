@@ -79,7 +79,7 @@ function App() {
 
   useEffect(() => {
     if (localStorage.getItem("history")) {
-      setContactHistory(JSON.parse(localStorage.getItem("history")));
+			setContactHistory(JSON.parse(localStorage.getItem('history')).reverse());
     }
     if (localStorage.getItem("savedContacts")) {
       setYourContacts(JSON.parse(localStorage.getItem("savedContacts")));
