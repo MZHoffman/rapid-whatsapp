@@ -44,10 +44,7 @@ function App() {
 
   const saveHistory = () => {
     let currentHistory = localStorage.getItem("history");
-    if (!currentHistory) {
-      currentHistory = []
-    }
-    let historyArray = JSON.parse(currentHistory);
+    let historyArray = currentHistory ? JSON.parse(currentHistory) : [];
     historyArray.unshift({
       number: countryCode + number,
       timedate: now(),
@@ -79,7 +76,6 @@ function App() {
       localStorage.setItem("savedContacts", JSON.stringify(savedContactsArray));
     }
     setYourContacts(savedContactsArray);
-
   };
 
   useEffect(() => {
@@ -123,8 +119,9 @@ function App() {
                   rel='noreferrer'
                   target='_blank'
                   href={`http://wa.me/${countryCode + number}`}
-                  className={`btn btn-success my-3 m-auto w-100 ${validNumber ? "" : "disabled"
-                    }`}
+                  className={`btn btn-success my-3 m-auto w-100 ${
+                    validNumber ? "" : "disabled"
+                  }`}
                 >
                   <i className='bi bi-whatsapp' /> Chat on whatsapp
                 </a>
@@ -139,8 +136,9 @@ function App() {
                 />
                 <button
                   onClick={saveContact}
-                  className={`btn btn-success w-100 my-3 ${validNumber && name ? "" : "disabled"
-                    }`}
+                  className={`btn btn-success w-100 my-3 ${
+                    validNumber && name ? "" : "disabled"
+                  }`}
                 >
                   Save Contact
                 </button>
